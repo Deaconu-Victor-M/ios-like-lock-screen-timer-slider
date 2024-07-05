@@ -223,7 +223,7 @@
     /* Remove default margin */
     margin: 0;
     /* Adjust according to your needs */
-    background-image: url("src/assets/lock_screen_simple.png");
+    background-image: url("public/lock_screen_simple.png");
     background-size: cover;
     background-position: center;
   }
