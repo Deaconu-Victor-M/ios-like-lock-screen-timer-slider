@@ -145,9 +145,7 @@
 
 <main class="relative select-none">
   <!-- <img
-    bind:this={overlay}
-    id="overlay"
-    src="src/assets/overlay.png"
+    src="public/lock_screen_simple.png"
     alt="ok"
     class="w-full h-full transition-all duration-150 ease-in-out pointer-events-none select-none backdrop-blur-md"
   /> -->
@@ -223,7 +221,7 @@
     /* Remove default margin */
     margin: 0;
     /* Adjust according to your needs */
-    background-image: url("public/lock_screen_simple.png");
+    background-image: url("/lock_screen_simple.png");
     background-size: cover;
     background-position: center;
   }
