@@ -149,14 +149,17 @@
     alt="ok"
     class="w-full h-full transition-all duration-150 ease-in-out pointer-events-none select-none backdrop-blur-md"
   /> -->
+  <!-- This is the background blur that applies when slider is in view-->
   <div
     bind:this={overlay}
     id="overlay"
     class="w-full h-full transition-all duration-150 ease-in-out pointer-events-none select-none bg-black/15 backdrop-blur-md"
   ></div>
+
+  <!-- Left Button that morphs -->
   <div
     bind:this={buttonElement}
-    class="fixed flex items-center justify-center overflow-hidden rounded-full cursor-pointer select-none w-14 h-14 bottom-8 right-8 bg-black/50 no-touch-action backdrop-blur-3xl"
+    class="fixed flex items-center justify-center overflow-hidden rounded-full cursor-pointer select-none w-14 h-14 bottom-8 right-8 bg-black/50 touch-none backdrop-blur-3xl"
     on:pointerdown={handlePointerDown}
   >
     <svg
@@ -178,10 +181,12 @@
       />
     </svg>
 
-    <div bind:this={sliderElement} class="select-none slider-container">
+    <!-- Slider -->
+    <div bind:this={sliderElement} class="absolute top-0 left-0 flex flex-col-reverse w-full h-full select-none">
+      <!-- Segments -->
       {#each segments as segment, i}
         <div
-          class="slider-segment select-none {i === totalSegments - 1
+          class="slider-segment flex-1 w-full bg-[#00000046] outline-1 outline-transparent transition-all duration-100 ease-linear  select-none {i === totalSegments - 1
             ? 'border-none'
             : 'border-t-[0.7px] border-[#FFFFFF38]'} "
           class:filled={segment === 1}
@@ -190,6 +195,7 @@
     </div>
   </div>
 
+  <!-- Slider Value -->
   <p
     class="fixed text-base text-center text-white -translate-x-1/2 select-none top-12 left-1/2"
     bind:this={showTime}
@@ -200,6 +206,7 @@
     >
   </p>
 
+  <!-- Start Button -->
   <button
     bind:this={startButton}
     class="fixed bottom-[70px] left-1/2 transform -translate-x-1/2 bg-[#30D158] text-white w-20  text-lg aspect-square rounded-full select-none"
@@ -225,33 +232,9 @@
     background-size: cover;
     background-position: center;
   }
-  .no-touch-action {
-    touch-action: none;
-  }
-  .slider-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  .slider-segment {
-    flex: 1;
-    width: 100%;
-    background-color: #00000046;
-    /* border-top: 1px solid #FFFFFF38; */
-    outline: 1px solid transparent;
-    /* backdrop-filter: blur(10px); */
-    /* margin-top: 1px; */
-    transition: background-color 0.1s ease;
-  }
+  
   .slider-segment.filled {
     background-color: #ffffff9f;
     border-top: 0.7px solid #00000051;
-  }
-  .select-none {
-    user-select: none;
   }
 </style>
